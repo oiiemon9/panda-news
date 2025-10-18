@@ -30,11 +30,16 @@ export const router = createBrowserRouter([
       },
       {
         path: '/news/:newsId',
+        errorElement: <p>error khaisos </p>,
         loader: ({ params }) =>
           fetch(
             `https://openapi.programming-hero.com/api/news/${params.newsId}`
           ),
         Component: NewsInfoPage,
+      },
+      {
+        path: '*',
+        element: <p>error 404</p>,
       },
     ],
   },

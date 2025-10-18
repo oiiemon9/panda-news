@@ -1,3 +1,5 @@
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 import React from 'react';
 import { FaEye, FaRegBookmark, FaStar } from 'react-icons/fa';
 import { IoMdShare } from 'react-icons/io';
@@ -52,11 +54,14 @@ const SingleNews = ({ news }) => {
             )}
           </p>
           <div className="mt-5 border-t border-base-200/20  py-5 flex items-center justify-between">
-            <div className="flex gap-2">
-              <FaStar className="text-yellow-500"></FaStar>
-              <FaStar className="text-yellow-500"></FaStar>
-              <FaStar className="text-yellow-500"></FaStar>
-              <FaStar className="text-yellow-500"></FaStar>
+            <div className="flex items-center gap-2">
+              <div>
+                <Rating
+                  style={{ maxWidth: 150 }}
+                  value={rating.number}
+                  readOnly
+                />
+              </div>
               <p className="text-sm text-base-200">({rating.number})</p>
             </div>
             <div className="flex items-center gap-2">
