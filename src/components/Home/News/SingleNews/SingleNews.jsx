@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaEye, FaRegBookmark, FaStar } from 'react-icons/fa';
 import { IoMdShare } from 'react-icons/io';
+import { Link } from 'react-router';
 
 const SingleNews = ({ news }) => {
   const {
@@ -31,35 +32,39 @@ const SingleNews = ({ news }) => {
           <IoMdShare />
         </div>
       </div>
-      <div className="p-4 space-y-2">
-        <h4 className="text-lg font-semibold ">{title}</h4>
-        <div className="h-96 w-full rounded-xl overflow-hidden">
-          <img
-            className="h-full w-full object-cover object-top "
-            src={image_url}
-            alt=""
-          />
-        </div>
-        <p className="mt-5 text-base-300">
-          {details.length > 200 ? details.slice(0, 200) + '...' : details}
-          {details.length > 200 && (
-            <button className="text-blue-600 cursor-pointer">Learn More</button>
-          )}
-        </p>
-        <div className="mt-5 border-t border-base-200/20  py-5 flex items-center justify-between">
-          <div className="flex gap-2">
-            <FaStar className="text-yellow-500"></FaStar>
-            <FaStar className="text-yellow-500"></FaStar>
-            <FaStar className="text-yellow-500"></FaStar>
-            <FaStar className="text-yellow-500"></FaStar>
-            <p className="text-sm text-base-200">({rating.number})</p>
+      <Link to="">
+        <div className="p-4 space-y-2">
+          <h4 className="text-lg font-semibold ">{title}</h4>
+          <div className="h-96 w-full rounded-xl overflow-hidden">
+            <img
+              className="h-full w-full object-cover object-top "
+              src={image_url}
+              alt=""
+            />
           </div>
-          <div className="flex items-center gap-2">
-            <FaEye></FaEye>
-            <p className="text-sm text-base-200">({total_view})</p>
+          <p className="mt-5 text-base-300">
+            {details.length > 200 ? details.slice(0, 200) + '...' : details}
+            {details.length > 200 && (
+              <button className="text-blue-600 cursor-pointer">
+                Learn More
+              </button>
+            )}
+          </p>
+          <div className="mt-5 border-t border-base-200/20  py-5 flex items-center justify-between">
+            <div className="flex gap-2">
+              <FaStar className="text-yellow-500"></FaStar>
+              <FaStar className="text-yellow-500"></FaStar>
+              <FaStar className="text-yellow-500"></FaStar>
+              <FaStar className="text-yellow-500"></FaStar>
+              <p className="text-sm text-base-200">({rating.number})</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaEye></FaEye>
+              <p className="text-sm text-base-200">({total_view})</p>
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

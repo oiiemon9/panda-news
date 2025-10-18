@@ -1,10 +1,15 @@
 import React from 'react';
+import SideLogin from './SideLogin/SideLogin';
+import FindUs from './FindUs/FindUs';
+import QZone from './QZone/QZone';
 
 const RightSide = () => {
   return (
-    <div>
-      <aside>RightSide</aside>
-    </div>
+    <aside className="space-y-10">
+      <SideLogin></SideLogin>
+      <FindUs></FindUs>
+      <QZone></QZone>
+    </aside>
   );
 };
 

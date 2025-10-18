@@ -20,7 +20,6 @@ const Home = () => {
           <Outlet></Outlet>
         </div>
         <div className="col-span-3">
-          <h3 className="font-bold">Panda News </h3>
           <RightSide></RightSide>
         </div>
       </div>
