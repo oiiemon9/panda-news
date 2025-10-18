@@ -1,15 +1,15 @@
 import React from 'react';
 import Header from '../components/Header/Header';
 import NavBar from '../components/NavBar/NavBar';
-import { Outlet, useLocation } from 'react-router';
+import { Outlet, useLocation, useNavigate, useNavigation } from 'react-router';
 
 const Root = () => {
   const location = useLocation();
-  console.log(location);
+  const hideNavbar = location.pathname.startsWith('/news/');
   return (
     <div>
       <Header></Header>
-      <NavBar></NavBar>
+      {hideNavbar || <NavBar></NavBar>}
       <Outlet></Outlet>
     </div>
   );

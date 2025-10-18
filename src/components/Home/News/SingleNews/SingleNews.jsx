@@ -12,6 +12,7 @@ const SingleNews = ({ news }) => {
     details,
     rating,
     total_view,
+    _id,
   } = news;
   const formatDate = author?.published_date?.split(' ')[0] || 'Unknown';
 
@@ -32,7 +33,7 @@ const SingleNews = ({ news }) => {
           <IoMdShare />
         </div>
       </div>
-      <Link to="">
+      <Link to={`/news/${_id}`}>
         <div className="p-4 space-y-2">
           <h4 className="text-lg font-semibold ">{title}</h4>
           <div className="h-96 w-full rounded-xl overflow-hidden">
