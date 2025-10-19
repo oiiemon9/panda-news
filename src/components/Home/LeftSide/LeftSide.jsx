@@ -7,10 +7,17 @@ const categoryPromises = fetch(
 const LeftSide = () => {
   const data = use(categoryPromises);
   const allCategory = data.data.news_category;
+  const allNews = allCategory.find(
+    (news) => news.category_name.toLowerCase() === 'all news'
+  );
+  const editNews = allCategory.filter(
+    (news) => news.category_name.toLowerCase() !== 'all news'
+  );
+  const newCategory = [allNews, ...editNews];
 
   return (
     <div className="flex flex-col gap-2">
-      {allCategory.map((btn) => (
+      {newCategory.map((btn) => (
         <NavLink
           to={`/category/${btn.category_id}`}
           key={btn.category_id}

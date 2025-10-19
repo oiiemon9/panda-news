@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import logoimg from '../../assets/logo.png';
 import { format } from 'date-fns';
 import Marquee from 'react-fast-marquee';
@@ -8,6 +8,23 @@ import { AuthContext } from '../AuthenticationContext/AuthenticationContext';
 const Header = () => {
   const location = useLocation();
   const hideNavbar = location.pathname.startsWith('/news/');
+  const [newsError, setNewsError] = useState('');
+  const [brakingTitle, setBrakingTitle] = useState([]);
+  useEffect(() => {
+    const newsTitle = async () => {
+      try {
+        const data = await fetch(
+          'https://openapi.programming-hero.com/api/news/category/01'
+        );
+        const dataJson = await data.json();
+        const titleArray = dataJson?.data.map((news) => news.title);
+        setBrakingTitle(titleArray);
+      } catch (error) {
+        setNewsError(error.message);
+      }
+    };
+    newsTitle();
+  }, []);
   return (
     <div className="max-w-[1440px] mx-auto px-2 mt-12 flex flex-col items-center gap-3">
       <div>
@@ -23,12 +40,7 @@ const Header = () => {
           <p className="btn btn-secondary">Latest</p>
           <div>
             <Marquee speed={50}>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit
-                explicabo excepturi ipsam a cum non tempore quia ducimus nulla.
-                Optio autem nisi fuga. Possimus quam eos aspernatur sunt magni
-                incidunt?
-              </p>
+              <p>{brakingTitle.map((title) => title)}</p>
             </Marquee>
           </div>
         </div>
