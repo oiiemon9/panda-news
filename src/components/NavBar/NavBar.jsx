@@ -29,8 +29,12 @@ const NavBar = () => {
         ''
       ) : (
         <div className="flex items-center justify-end gap-4">
-          <div>
-            <img src={userImg} alt="" />
+          <div className="w-12 h-12">
+            <img
+              className=" w-full h-full rounded-full object-cover"
+              src={user ? user?.photoURL : userImg}
+              alt=""
+            />
           </div>
 
           {user ? (

@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../../../AuthenticationContext/AuthenticationContext';
 
 const SideLogin = () => {
+  const { googleLogin, setUser } = use(AuthContext);
+
+  const handelGoogleLogin = () => {
+    googleLogin()
+      .then((res) => setUser(res.user))
+      .catch((error) => alert(`${error.message}`));
+  };
+
   return (
     <div>
       <h3 className="font-bold">Login With</h3>
       <div className="space-y-4 mt-4">
         {/* Google */}
-        <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+        <button
+          onClick={handelGoogleLogin}
+          className="btn bg-white text-black border-[#e5e5e5] w-full"
+        >
           <svg
             aria-label="Google logo"
             width="16"
