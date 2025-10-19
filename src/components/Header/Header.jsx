@@ -36,7 +36,7 @@ const Header = () => {
         {format(new Date(), 'EEEE , MMMM dd , yyyy')}
       </h6>
       {hideNavbar || (
-        <div className="w-full bg-gray-100 p-4 flex items-center  gap-2">
+        <div className="w-full bg-gray-100 p-4 flex items-center  gap-2 overflow-hidden">
           <p className="btn btn-secondary">Latest</p>
           <div>
             <Marquee speed={50}>

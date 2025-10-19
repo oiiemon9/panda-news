@@ -10,11 +10,11 @@ const NewsInfoPage = () => {
   return (
     <div className="max-w-[1440px] px-2 mx-auto mt-20">
       <div className="grid grid-cols-12 gap-5">
-        <div className="col-span-9">
+        <div className="col-span-12 lg:col-span-9">
           <h3 className="font-bold">Panda News </h3>
           <NewsInfo newsObject={newsObject}></NewsInfo>
         </div>
-        <div className="col-span-3">
+        <div className="col-span-12 lg:col-span-3">
           <RightSide></RightSide>
         </div>
       </div>
