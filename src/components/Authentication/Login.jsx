@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import React, { use, useState } from 'react';
 import { AuthContext } from '../AuthenticationContext/AuthenticationContext';
 import { Link, useLocation, useNavigate } from 'react-router';
+import emonPhoto from '../../assets/emonImg.png';
 
 const Login = () => {
   const { user, login, logout, setUser, authLoader, googleLogin, githubLogin } =
@@ -66,12 +67,14 @@ const Login = () => {
             {/* Title */}
             <div className="mt-4 md:mb-12 max-w-2xl">
               <h1 className="mb-4 font-semibold text-gray-800 text-4xl lg:text-5xl">
-                Fully customizable rules to match your unique needs
+                Log in to get personalized news .
               </h1>
               <p className="text-gray-600">
-                We provide you with a test account that can be set up in
-                seconds. Our main focus is getting responses to you as soon as
-                we can.
+                Panda News is an independent online news platform dedicated to
+                delivering accurate, fast, and reader-friendly journalism. In
+                today’s world of overwhelming information, our mission is to
+                bring clarity through verified news, clearly explained stories,
+                and real perspectives.
               </p>
             </div>
             {/* End Title */}
@@ -105,16 +108,16 @@ const Login = () => {
                   <div className="shrink-0">
                     <img
                       className="size-8 rounded-full"
-                      src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
-                      alt="Avatar"
+                      src={emonPhoto}
+                      alt="Emon photo"
                     />
                   </div>
                   <div className="grow">
                     <div className="font-semibold text-gray-800">
-                      Josh Grazioso
+                      Emon Mollah
                     </div>
                     <div className="text-xs text-gray-500">
-                      Director Payments & Risk | Airbnb
+                      Web Developer | Bangladesh
                     </div>
                   </div>
                 </div>
