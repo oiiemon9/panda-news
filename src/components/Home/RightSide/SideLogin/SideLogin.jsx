@@ -2,10 +2,15 @@ import React, { use } from 'react';
 import { AuthContext } from '../../../AuthenticationContext/AuthenticationContext';
 
 const SideLogin = () => {
-  const { googleLogin, setUser } = use(AuthContext);
+  const { googleLogin, setUser, githubLogin } = use(AuthContext);
 
   const handelGoogleLogin = () => {
     googleLogin()
+      .then((res) => setUser(res.user))
+      .catch((error) => alert(`${error.message}`));
+  };
+  const handelGithubLogin = () => {
+    githubLogin()
       .then((res) => setUser(res.user))
       .catch((error) => alert(`${error.message}`));
   };
@@ -49,7 +54,10 @@ const SideLogin = () => {
           Login with Google
         </button>
         {/* GitHub */}
-        <button className="btn bg-black text-white border-black w-full">
+        <button
+          onClick={handelGithubLogin}
+          className="btn bg-black text-white border-black w-full"
+        >
           <svg
             aria-label="GitHub logo"
             width="16"
