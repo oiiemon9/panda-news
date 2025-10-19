@@ -6,6 +6,7 @@ import NavigateAllNews from '../components/Home/NavigateAllNews/NavigateAllNews'
 import NewsInfoPage from '../components/NewsInfoPage/NewsInfoPage';
 import Login from '../components/Authentication/Login';
 import Registration from '../components/Authentication/Registration';
+import PrivetRoute from '../PrivetRoute/PrivetRoute';
 
 export const router = createBrowserRouter([
   {
@@ -37,7 +38,11 @@ export const router = createBrowserRouter([
           fetch(
             `https://openapi.programming-hero.com/api/news/${params.newsId}`
           ),
-        Component: NewsInfoPage,
+        element: (
+          <PrivetRoute>
+            <NewsInfoPage></NewsInfoPage>
+          </PrivetRoute>
+        ),
       },
       {
         path: '/login',

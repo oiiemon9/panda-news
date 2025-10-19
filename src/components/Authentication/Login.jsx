@@ -1,12 +1,14 @@
 import { format } from 'date-fns';
 import React, { use, useState } from 'react';
 import { AuthContext } from '../AuthenticationContext/AuthenticationContext';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 
 const Login = () => {
   const { user, login, logout, setUser, authLoader } = use(AuthContext);
   const [submitLoader, setSubmitLoader] = useState(false);
   const [loginError, setLoginError] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -18,7 +20,10 @@ const Login = () => {
       try {
         const result = await login(email, password);
         const loginUser = result.user;
-        setUser(loginUser);
+        if (loginUser) {
+          setUser(loginUser);
+          navigate(location.state);
+        }
       } catch (error) {
         setLoginError(error.message);
       } finally {
