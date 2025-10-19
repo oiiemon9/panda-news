@@ -3,13 +3,14 @@ import React, { use, useState } from 'react';
 import { AuthContext } from '../AuthenticationContext/AuthenticationContext';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase/Firebase.init';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import emonPhoto from '../../assets/emonImg.png';
 
 const Registration = () => {
   const { registration, setUser, user, logout, authLoader } = use(AuthContext);
   const [submitLoader, setSubmitLoader] = useState(false);
   const [registrationError, setRegistrationError] = useState('');
+  const navigate = useNavigate();
   const handelRegistration = (e) => {
     e.preventDefault();
     setSubmitLoader(true);
@@ -29,7 +30,10 @@ const Registration = () => {
             displayName: name,
             photoURL: photoUrl,
           })
-            .then(() => setUser(currentUser))
+            .then(() => {
+              setUser(currentUser);
+              navigate('/');
+            })
             .catch(() => setUser());
         }
       } catch (error) {
