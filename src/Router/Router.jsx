@@ -4,6 +4,8 @@ import Root from '../Layout/Root';
 import NewsPost from '../components/Home/News/NewsPost';
 import NavigateAllNews from '../components/Home/NavigateAllNews/NavigateAllNews';
 import NewsInfoPage from '../components/NewsInfoPage/NewsInfoPage';
+import Login from '../components/Authentication/Login';
+import Registration from '../components/Authentication/Registration';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
             `https://openapi.programming-hero.com/api/news/${params.newsId}`
           ),
         Component: NewsInfoPage,
+      },
+      {
+        path: '/login',
+        Component: Login,
+      },
+      {
+        path: '/registration',
+        Component: Registration,
       },
       {
         path: '*',

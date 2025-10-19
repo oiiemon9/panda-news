@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import logoimg from '../../assets/logo.png';
 import { format } from 'date-fns';
 import Marquee from 'react-fast-marquee';
 import { useLocation } from 'react-router';
+import { AuthContext } from '../AuthenticationContext/AuthenticationContext';
 
 const Header = () => {
   const location = useLocation();

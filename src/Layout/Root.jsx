@@ -8,7 +8,12 @@ const Root = () => {
   const hideNavbar = location.pathname.startsWith('/news/');
   return (
     <div>
-      <Header></Header>
+      {location.pathname === '/login' ||
+      location.pathname === '/registration' ? (
+        ''
+      ) : (
+        <Header></Header>
+      )}
       {hideNavbar || <NavBar></NavBar>}
       <Outlet></Outlet>
     </div>
