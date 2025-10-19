@@ -38,17 +38,15 @@ const AuthenticationContext = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = () => {
-      onAuthStateChanged(auth, (result) => {
-        if (result) {
-          setUser(result);
-          setAuthLoader(false);
-        } else {
-          setUser(null);
-          setAuthLoader(false);
-        }
-      });
-    };
+    const unsubscribe = onAuthStateChanged(auth, (result) => {
+      if (result) {
+        setUser(result);
+      } else {
+        setUser(null);
+      }
+      setAuthLoader(false);
+    });
+
     return () => unsubscribe();
   }, []);
 

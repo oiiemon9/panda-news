@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         errorElement: <p>error khaisos </p>,
         loader: ({ params }) =>
           fetch(
-            `https://openapi.programming-hero.com/api/news/${params.newsId}`
+            `https://openapi.programming-hero.com/api/news/${params?.newsId}`
           ),
         element: (
           <PrivetRoute>
