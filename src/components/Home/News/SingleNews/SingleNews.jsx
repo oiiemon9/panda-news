@@ -1,6 +1,6 @@
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEye, FaRegBookmark, FaStar } from 'react-icons/fa';
 import { IoMdShare } from 'react-icons/io';
 import { Link } from 'react-router';
@@ -17,6 +17,23 @@ const SingleNews = ({ news }) => {
     _id,
   } = news;
   const formatDate = author?.published_date?.split(' ')[0] || 'Unknown';
+
+  const [oldPosition, setOldPosition] = useState(0);
+
+  useEffect(() => {
+    const savedPosition = sessionStorage.getItem('NewsScrollSave');
+    if (!oldPosition) {
+      window.scrollTo(0, parseInt(savedPosition));
+      setOldPosition(parseInt(savedPosition));
+    } else {
+      sessionStorage.setItem('NewsScrollSave', 0);
+    }
+  }, [oldPosition]);
+
+  const handelSaveScroll = () => {
+    const position = window.scrollY;
+    sessionStorage.setItem('NewsScrollSave', position);
+  };
 
   return (
     <div className="border border-base-200/50 rounded">
@@ -35,7 +52,7 @@ const SingleNews = ({ news }) => {
           <IoMdShare />
         </div>
       </div>
-      <Link to={`/news/${_id}`}>
+      <Link onClick={handelSaveScroll} to={`/news/${_id}`}>
         <div className="p-4 space-y-2">
           <h4 className="text-lg font-semibold ">{title}</h4>
           <div className="h-96 w-full rounded-xl overflow-hidden">
