@@ -5,8 +5,8 @@ const ScrollTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const skipRouts = ['/category'];
-    if (!pathname.includes(skipRouts)) {
+    const skipRouts = '/category';
+    if (!pathname.startsWith(skipRouts)) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [pathname]);
