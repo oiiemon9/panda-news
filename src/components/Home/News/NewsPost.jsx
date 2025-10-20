@@ -11,10 +11,27 @@ const NewsPost = () => {
     return <p>loading....</p>;
   }
 
+  useEffect(() => {
+    const savedPosition = parseInt(sessionStorage.getItem('NewsScrollSave'));
+    if (savedPosition) {
+      window.scrollTo(0, savedPosition);
+    }
+    sessionStorage.setItem('NewsScrollSave', 0);
+  }, []);
+
+  const handelSaveScroll = () => {
+    const position = window.scrollY;
+    sessionStorage.setItem('NewsScrollSave', position);
+  };
+
   return (
     <div className="space-y-10">
       {data.data.map((news, i) => (
-        <SingleNews key={i} news={news}></SingleNews>
+        <SingleNews
+          key={i}
+          news={news}
+          handelSaveScroll={handelSaveScroll}
+        ></SingleNews>
       ))}
     </div>
   );
